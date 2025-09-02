@@ -81,15 +81,15 @@ const Introduction = () => {
                         </div>
                     </div>
                     <p className="text-base text-gray-700 leading-relaxed mb-6">
-                        Currently, we release a <strong className="text-purple-600">LiveSQLBench-Base-Lite</strong>, featuring 18 end-user level databases with 270 tasks, HKB-JSON and the JSON operation in SQL for trial. 
+                        We release <strong className="text-purple-600">ROME</strong>, featuring 8 visual subtasks (281 high-quality questions in total). Each sample has been carefully checked to ensure that images are necessary to answer the questions correctly:
                     </p>
 
                 </div>
 
                 
-                <p className="text-base text-gray-700 leading-relaxed italic border-l-4 border-blue-500 pl-4 py-1">
+                {/* <p className="text-base text-gray-700 leading-relaxed italic border-l-4 border-blue-500 pl-4 py-1">
                     <strong className="text-blue-600">LiveSQLBench</strong>'s updating databases, tasks, and HKB support <a href="https://bird-interact.github.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">BIRD-Interact</a>'s conversational and agentic evaluation. <strong className="text-blue-600">BIRD-Interact</strong> evaluates LLMs' text-to-SQL ability in dynamic interactive settings with database and user simulation.
-                </p>
+                </p> */}
             </div>
         </div>
     );

@@ -966,18 +966,9 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
               </table>
             </div>
             
+
             <p className="mt-4 text-sm text-gray-600">
-              <span className="font-medium">Note:</span> {activeMainCategory === 'Text Tasks' 
-                ? 'ROME evaluates text-based reasoning capabilities across algorithmic coding, problem solving, mathematical reasoning, and logical inference tasks.'
-                : 'ROME-V evaluates visual reasoning capabilities across geographic understanding, meme interpretation, spatial reasoning, visual analysis, and chart comprehension tasks.'
-              } 
-            </p>
-            <p className="mt-4 text-sm text-gray-600">
-              <span className="font-medium">Evaluation:</span> Accuracy is calculated as the percentage of tasks correctly completed. 
-              {activeMainCategory === 'Text Tasks' 
-                ? ' Tasks include code generation, mathematical proofs, logical deduction, and complex problem-solving scenarios.'
-                : ' Tasks involve interpreting images, understanding visual relationships, analyzing charts, and processing multimodal information.'
-              }
+              <span className="font-medium">Evaluation:</span> Accuracy is calculated based on multiple evaluators, see our github for more details. 
             </p>
           </div>
         </div>

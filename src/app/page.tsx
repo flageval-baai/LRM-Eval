@@ -57,7 +57,7 @@ export default function Page() {
       <QuantitativeResults />
 
       {/* Discussion Section */}
-      <DiscussionSection />
+      {/* <DiscussionSection /> */}
       
       {/* Stay Tuned Section */}
       {/* <StayTunedSection /> */}
