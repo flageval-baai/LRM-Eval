@@ -33,7 +33,7 @@ const LatestNews = () => {
           {/* Text with adjustable vertical position */}
           <div className="relative" style={{ top: "0px" }}>
             <span className="text-gray-700">
-            The first release of <b>ROME</b> has been released! It contains <b>automatically verifiable textual and visual questions</b>. Download it and test your reasoning models in a containmation-free way! Please check the <a href="https://github.com/bird-bench/mini_dev/tree/main/live_sql_bench_sqlite" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub repository</a> and <a href="https://huggingface.co/datasets/birdsql/livesqlbench-base-lite-sqlite" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">dataset</a> for more details. 
+            The first release of <b>ROME</b> has been released! It contains <b>automatically verifiable textual and visual questions</b>. Download it and test your reasoning models! Please check the <a href="https://github.com/bird-bench/mini_dev/tree/main/live_sql_bench_sqlite" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub repository</a> and <a href="https://huggingface.co/datasets/birdsql/livesqlbench-base-lite-sqlite" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">dataset</a> for more details. 
             </span>
           </div>
         </div>

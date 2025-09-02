@@ -21,9 +21,9 @@ import DataViewer from './components/DataViewer';
 
 export default function Page() {
   return (
-    <main className="max-w-4xl mx-auto px-4 py-8">
+    <main className="max-w-7xl mx-auto px-4 py-8">
       {/* Notice Banner */}
-      <NoticeBanner />
+      {/* <NoticeBanner /> */}
 
       {/* Logo and Title */}
       <LogoAndTitle />
@@ -41,7 +41,7 @@ export default function Page() {
       {/* <ButtonsAndContent /> */}
 
       {/* FAQ Section */}
-      <FAQSection />
+      {/* <FAQSection /> */}
 
       {/* Introduction */}
       <Introduction />

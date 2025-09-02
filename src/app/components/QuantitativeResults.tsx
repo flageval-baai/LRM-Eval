@@ -699,7 +699,7 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
 
   return (
     <section className="w-full mb-12">
-      <div className="max-w-4xl mx-auto px-4 py-6 bg-white rounded-lg shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 py-6 bg-white rounded-lg shadow-sm">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             {/* {activeMainCategory === 'rome' ? 'ROME' : 'ROME-V'} Leaderboard */}
@@ -740,7 +740,7 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
             {activeMainCategory === 'rome' ? 'Text-based Reasoning Tasks' : 'Visual Reasoning Tasks'}
           </h3> */}
           {activeMainCategory === 'Text Tasks' ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-7xl mx-auto">
               <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
                 <h4 className="font-medium text-blue-900 mb-1">Problem solving</h4>
                 <p className="text-xs text-gray-700">college course questions, word
