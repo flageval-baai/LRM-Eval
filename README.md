@@ -8,9 +8,6 @@ This is the homepage for the ROME project. It contains:
 3. Leaderboard for the top LLMs' performance on the benchmark
 
 
-
-
-
 ## Prerequisites
 Replace the data 'data' folder with the newest data.
 

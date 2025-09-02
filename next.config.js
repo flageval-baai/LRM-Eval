@@ -7,8 +7,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isGitHubPages ? '/Rome' : '',
-  assetPrefix: isGitHubPages ? '/Rome/' : '',
+  basePath: isGitHubPages ? '/LRM-Eval' : '',
+  assetPrefix: isGitHubPages ? '/LRM-Eval/' : '',
   eslint: {
     ignoreDuringBuilds: true,
   },
