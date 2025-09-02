@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { getBasePath } from '@/utils/fileUtils';
 import { title } from 'process';
 
 const Introduction = () => {
@@ -72,7 +73,7 @@ const Introduction = () => {
                     <div className="my-8 -mx-5">
                         <div className="relative w-full h-96 md:h-128 lg:h-160 rounded-lg overflow-hidden border border-gray-200 bg-white">
                             <Image
-                                src="/romev_overall.png"
+                                src={`${getBasePath()}/romev_overall.png`}
                                 alt="LiveSQLBench Overall Performance Results"
                                 fill
                                 className="object-contain p-2"
