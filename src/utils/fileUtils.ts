@@ -9,7 +9,7 @@ export type { DataEntry, KnowledgeEntry };
 export function getBasePath(): string {
   // For GitHub Pages deployment
   if (process.env.DEPLOY_TARGET === 'GH_PAGES') {
-    return '/Rome';
+    return '/LRM-Eval';
   }
   // For Netlify deployment or local development
   return '';
