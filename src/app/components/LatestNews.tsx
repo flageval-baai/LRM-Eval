@@ -27,7 +27,7 @@ const LatestNews = () => {
           
           {/* Date with adjustable vertical position */}
           <div className="relative px-2" style={{ top: "0px" }}>
-            <span className="text-gray-500 font-bold whitespace-nowrap">[07/28/2025]:</span>
+            <span className="text-gray-500 font-bold whitespace-nowrap">[09/10/2025]:</span>
           </div>
         
           {/* Text with adjustable vertical position */}

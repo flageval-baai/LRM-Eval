@@ -86,7 +86,7 @@ const LinksSection = () => {
           Dataset
           <span className="text-gray-500 text-sm font-mono"> </span>
         </Link>
-        <Link href="https://huggingface.co/datasets/BAAI/ROME-V-evaluated" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
+        <Link href="https://huggingface.co/datasets/BAAI/ROME-Evaluated" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
           <Image
             src={`${getBasePath()}/hg.png`}
             alt="Reasoning Trace"

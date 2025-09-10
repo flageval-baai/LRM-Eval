@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { getBasePath } from '@/utils/fileUtils';
 
@@ -15,7 +15,7 @@ interface ModelResult {
 }
 
 type MainCategory = 'Visual Tasks' | 'Text Tasks';
-type RomeSubcategory = 'overall' | 'problem-solving' | 'algorithmic-coding' | 'task-completion' | 'factuality-abstention' | 'safety';
+type RomeSubcategory = 'overall' | 'cipherbench' | 'academic' | 'npr' | 'connections' | 'ifeval' | 'mt' | 'longctx' | 'factuality' | 'leetcode';
 type RomeVSubcategory = 'overall' | 'academic' | 'diagrams' | 'puzzles-game' | 'memes' | 'geolocation' | 'recognition' | 'multi-image' | 'spatial';
 
 const Leaderboard = () => {
@@ -77,13 +77,6 @@ const Leaderboard = () => {
       },
       'gemini-2.5-pro': {
         fullName: 'Gemini 2.5 Pro',
-        organization: 'Google',
-        logo: `${getBasePath()}/model_logos/google-gemini-icon.png`,
-        hasReasoning: true,
-        link: 'https://deepmind.google/technologies/gemini/'
-      },
-      'gemini-2.5-pro-preview-05-06': {
-        fullName: 'Gemini 2.5 Pro Preview',
         organization: 'Google',
         logo: `${getBasePath()}/model_logos/google-gemini-icon.png`,
         hasReasoning: true,
@@ -167,7 +160,7 @@ const Leaderboard = () => {
         link: 'https://x.ai'
       },
       'magistral-medium-2506-thinking': {
-        fullName: 'Magistral Medium (Thinking)',
+        fullName: 'Magistral Medium-thinking',
         organization: 'Mistral AI',
         logo: `${getBasePath()}/model_logos/mistral.png`,
         hasReasoning: true,
@@ -187,15 +180,15 @@ const Leaderboard = () => {
         hasReasoning: true,
         link: 'https://openai.com'
       },
-      'qwen3-235b-a22b (no thinking)': {
-        fullName: 'Qwen3-235B (No Thinking)',
+      'qwen3-235b-a22b': {
+        fullName: 'Qwen3-235B',
         organization: 'Qwen',
         logo: `${getBasePath()}/model_logos/qwen.png`,
         hasReasoning: true,
         link: 'https://qwenlm.github.io'
       },
-      'qwen3-235b-a22b (thinking)': {
-        fullName: 'Qwen3-235B (Thinking)',
+      'qwen3-235b-a22b-thinking': {
+        fullName: 'Qwen3-235B-thinking',
         organization: 'Qwen',
         logo: `${getBasePath()}/model_logos/qwen.png`,
         hasReasoning: true,
@@ -214,6 +207,63 @@ const Leaderboard = () => {
         logo: `${getBasePath()}/model_logos/qwen.png`,
         hasReasoning: true,
         link: 'https://qwenlm.github.io'
+      },
+      // Added from text_accuracy.json (missing entries)
+      'DeepSeek-V3-0324': {
+        fullName: 'DeepSeek V3 (0324)',
+        organization: 'DeepSeek',
+        logo: `${getBasePath()}/model_logos/deepseek_logo.png`,
+        hasReasoning: true,
+        link: 'https://deepseek.com'
+      },
+      'DeepSeek-V3.1-Think': {
+        fullName: 'DeepSeek V3.1 Think',
+        organization: 'DeepSeek',
+        logo: `${getBasePath()}/model_logos/deepseek_logo.png`,
+        hasReasoning: true,
+        link: 'https://deepseek.com'
+      },
+      'DeepSeek-V3.1': {
+        fullName: 'DeepSeek V3.1',
+        organization: 'DeepSeek',
+        logo: `${getBasePath()}/model_logos/deepseek_logo.png`,
+        hasReasoning: true,
+        link: 'https://deepseek.com'
+      },
+      'gemini-2.5-flash-thinking': {
+        fullName: 'Gemini 2.5 Flash (Thinking)',
+        organization: 'Google',
+        logo: `${getBasePath()}/model_logos/google-gemini-icon.png`,
+        hasReasoning: true,
+        link: 'https://deepmind.google/technologies/gemini/'
+      },
+      'gpt-4.1-2025-04-14': {
+        fullName: 'GPT-4.1',
+        organization: 'OpenAI',
+        logo: `${getBasePath()}/model_logos/openai_reasoning.png`,
+        hasReasoning: true,
+        link: 'https://openai.com'
+      },
+      'gpt-4.1-mini-2025-04-14': {
+        fullName: 'GPT-4.1 Mini',
+        organization: 'OpenAI',
+        logo: `${getBasePath()}/model_logos/openai_reasoning.png`,
+        hasReasoning: true,
+        link: 'https://openai.com'
+      },
+      'claude-sonnet-4-thinking': {
+        fullName: 'Claude Sonnet 4 (Thinking)',
+        organization: 'Anthropic',
+        logo: `${getBasePath()}/model_logos/claude_logo.png`,
+        hasReasoning: true,
+        link: 'https://www.anthropic.com'
+      },
+      'qwen3-235b-a22b (thinking)': {
+        fullName: 'Qwen3-235B-a22b-Thinking',
+        organization: 'Qwen',
+        logo: `${getBasePath()}/model_logos/qwen.png`,
+        hasReasoning: true,
+        link: 'https://qwenlm.github.io'
       }
     };
 
@@ -226,110 +276,95 @@ const Leaderboard = () => {
     };
   };
 
-  // ROME CSV data (from accuracy_table_text.csv)
-  const romeCSVData = `model,Problem Solving,Tasks,Factuality,Programming,Safety
-DeepSeek-Chat,39.18851453476334,46.59905224225613,75.0,10.784313725490197,
-DeepSeek-R1,67.34844092923103,37.33465608465608,73.71794871794873,0.0,
-Kimi-k2,48.299127293055605,46.25520110957004,70.51282051282051,13.725490196078432,
-Phi-4-reasoning-plus,40.55618245061907,38.79838485101643,30.12820512820513,4.411764705882352,
-claude-sonnet-4,68.4261770673734,100.0,68.58974358974359,16.176470588235293,
-claude-sonnet-4 (no thinking),68.54485002829655,47.92084039656856,71.7948717948718,14.705882352941178,
-gemini-2.5-flash,59.33814547186219,47.301523090358046,63.46153846153846,5.0,
-gemini-2.5-pro,67.76790705619281,47.181769147788565,81.41025641025641,25.98039215686275,
-gemini-2.5-pro-preview-05-06,54.79086435601198,100.0,82.05128205128204,,
-gpt-4.1,59.23691198393308,46.891213335388095,,,
-gpt-4.1-mini,57.4555364611371,46.68786651093754,,12.254901960784315,
-gpt-5-high,83.18618265766699,47.02348846766322,83.97435897435896,65.19607843137254,
-gpt-5-low,79.49551482463042,46.64303693429907,82.6923076923077,59.31372549019608,
-gpt-5-medium,83.35506905047828,46.551214876457585,83.97435897435898,65.19607843137256,
-gpt-5-minimal,39.30615656963021,46.609968151230284,74.35897435897436,24.50980392156863,
-gpt-5-mini-high,77.48533841981035,46.6908743000976,64.74358974358975,67.6470588235294,
-gpt-5-mini-low,66.53796482255994,46.85814455231931,60.25641025641026,49.509803921568626,
-gpt-5-mini-medium,74.47004793159138,46.88382904402322,64.1025641025641,24.01960784313725,
-gpt-5-mini-minimal,39.526701416207715,46.091462474957616,59.61538461538461,33.333333333333336,
-grok-3-mini-beta,51.31370605408091,46.86167616992859,64.1025641025641,13.23529411764706,
-magistral-medium-2506-thinking,42.374697192430325,98.24561403508771,62.82051282051282,,
-o3-2025-04-16,,46.119073303539324,,45.588235294117645,
-o4-mini-2025-04-16,,46.19729271939287,,39.21568627450981,
-qwen3-235b-a22b (no thinking),43.41428475299185,45.819527919042486,46.794871794871796,11.764705882352942,
-qwen3-235b-a22b (thinking),50.8650332311897,46.11586274207633,50.641025641025635,18.137254901960787,
-qwen3-235b-a22b-instruct-2507,61.133004989854655,46.80677556891149,57.6923076923077,14.215686274509803,
-qwen3-235b-a22b-thinking-2507,64.20034214667274,47.09379976370267,63.46153846153846,12.745098039215685`;
+  // Parse text_accuracy.json (Text Tasks) into ROME buckets
+  const createEmptyRomeBuckets = (): Record<RomeSubcategory, ModelResult[]> => ({
+    overall: [],
+    cipherbench: [],
+    academic: [],
+    npr: [],
+    connections: [],
+    ifeval: [],
+    mt: [],
+    longctx: [],
+    factuality: [],
+    leetcode: []
+  });
 
-  // Parse ROME CSV data
-  const parseRomeCSVData = (): Record<RomeSubcategory, ModelResult[]> => {
-    const lines = romeCSVData.trim().split('\n');
-    const headers = lines[0].split(',');
-    const models = lines.slice(1);
+  const [romeData, setRomeData] = useState<Record<RomeSubcategory, ModelResult[]>>(createEmptyRomeBuckets());
 
-    const categoryMapping: Record<string, RomeSubcategory> = {
-      'Problem Solving': 'problem-solving',
-      'Tasks': 'task-completion',
-      'Factuality': 'factuality-abstention',
-      'Programming': 'algorithmic-coding',
-      'Safety': 'safety'
-    };
+  useEffect(() => {
+    const loadTextResultsFromJson = async () => {
+      try {
+        const res = await fetch(`${getBasePath()}/data/rome/text_accuracy.json`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
 
-    const result: Record<RomeSubcategory, ModelResult[]> = {
-      overall: [],
-      'problem-solving': [],
-      'task-completion': [],
-      'factuality-abstention': [],
-      'algorithmic-coding': [],
-      safety: []
-    };
+        const buckets = createEmptyRomeBuckets();
+        const models = data?.models || {};
 
-    // Process each model
-    models.forEach(modelLine => {
-      const values = modelLine.split(',');
-      const modelName = values[0];
-      const modelInfo = getRomeModelInfo(modelName);
+        Object.keys(models).forEach((modelName) => {
+          const m = models[modelName];
+          const info = getRomeModelInfo(modelName);
 
-      const scores: number[] = [];
-      
-      // Process each category
-      headers.slice(1).forEach((header, headerIndex) => {
-        const categoryKey = categoryMapping[header];
-        if (categoryKey && values[headerIndex + 1] && values[headerIndex + 1].trim() !== '') {
-          const accuracy = parseFloat(values[headerIndex + 1]);
-          scores.push(accuracy);
-          
-          result[categoryKey].push({
-            name: modelName,
-            completionRate: Math.round(accuracy * 10) / 10, // Round to 1 decimal place
-            standardDeviation: 1.5, // Default standard deviation since not provided in CSV
-            logo: modelInfo.logo,
-            fullName: modelInfo.fullName,
-            category: categoryKey,
-            organization: modelInfo.organization,
-            link: modelInfo.link,
-            hasReasoning: modelInfo.hasReasoning
+          // overall from mean/std
+          if (m?.accuracy?.mean != null && m?.accuracy?.std != null) {
+            buckets.overall.push({
+              name: modelName,
+              completionRate: Number(m.accuracy.mean),
+              standardDeviation: Number(m.accuracy.std),
+              logo: info.logo,
+              fullName: info.fullName,
+              category: 'overall',
+              organization: info.organization,
+              link: info.link,
+              hasReasoning: info.hasReasoning
+            });
+          }
+
+          const per = m?.per_benchmark || {};
+          const mapping: Record<string, RomeSubcategory> = {
+            cipherbench: 'cipherbench',
+            academic: 'academic',
+            npr: 'npr',
+            connections: 'connections',
+            ifeval: 'ifeval',
+            mt: 'mt',
+            longctx: 'longctx',
+            factuality: 'factuality',
+            leetcode: 'leetcode'
+          };
+
+          Object.keys(mapping).forEach((key) => {
+            const bench = per[key];
+            if (bench && bench.accuracy != null) {
+              const std = bench.accuracy_std != null ? Number(bench.accuracy_std) : 1.5;
+              const category = mapping[key];
+              buckets[category].push({
+                name: modelName,
+                completionRate: Number(bench.accuracy),
+                standardDeviation: std,
+                logo: info.logo,
+                fullName: info.fullName,
+                category,
+                organization: info.organization,
+                link: info.link,
+                hasReasoning: info.hasReasoning
+              });
+            }
           });
-        }
-      });
-
-      // Calculate overall score as average of available scores
-      if (scores.length > 0) {
-        const overallScore = scores.reduce((sum, score) => sum + score, 0) / scores.length;
-        result.overall.push({
-          name: modelName,
-          completionRate: Math.round(overallScore * 10) / 10, // Round to 1 decimal place
-          standardDeviation: 1.5,
-          logo: modelInfo.logo,
-          fullName: modelInfo.fullName,
-          category: 'overall',
-          organization: modelInfo.organization,
-          link: modelInfo.link,
-          hasReasoning: modelInfo.hasReasoning
         });
+
+        setRomeData(buckets);
+      } catch (err) {
+        setRomeData(createEmptyRomeBuckets());
       }
-    });
+    };
 
-    return result;
-  };
+    loadTextResultsFromJson();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // Rome dataset - Text-based reasoning tasks parsed from CSV
-  const romeData: Record<RomeSubcategory, ModelResult[]> = parseRomeCSVData();
+  
 
   // Helper function to parse accuracy string (e.g., "61.1 ± 0.6")
   const parseAccuracy = (accuracyStr: string): { accuracy: number, std: number } => {
@@ -681,7 +716,10 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
       'DeepSeek': 'bg-purple-100 text-purple-700 border-purple-200',
       'Qwen': 'bg-teal-100 text-teal-700 border-teal-200',
       'Meta': 'bg-indigo-100 text-indigo-700 border-indigo-200',
-      'Mistral AI': 'bg-pink-100 text-pink-700 border-pink-200'
+      'Mistral AI': 'bg-pink-100 text-pink-700 border-pink-200',
+      'Moonshot AI': 'bg-red-100 text-red-700 border-red-200',
+      'Microsoft': 'bg-yellow-100 text-yellow-700 border-yellow-200',
+      'xAI': 'bg-cyan-100 text-cyan-700 border-cyan-200'
     };
     return colors[organization as keyof typeof colors] || 'bg-gray-100 text-gray-700 border-gray-200';
   };
@@ -742,61 +780,75 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
           {activeMainCategory === 'Text Tasks' ? (
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-7xl mx-auto">
               <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-                <h4 className="font-medium text-blue-900 mb-1">Problem solving</h4>
-                <p className="text-xs text-gray-700">college course questions, word
-                  puzzles, and deciphering</p>
+                <h4 className="font-medium text-blue-900 mb-1">Academic</h4>
+                <p className="text-xs text-gray-700">College-level questions from course and lecture materials across STEM, humanities, and social sciences.</p>
               </div>
               <div className="bg-green-50 p-3 rounded-lg border border-green-200">
-                <h4 className="font-medium text-green-900 mb-1">Algorithmic Coding</h4>
-                <p className="text-xs text-gray-700">recent released code problems</p>
+                <h4 className="font-medium text-green-900 mb-1">NYT Connections</h4>
+                <p className="text-xs text-gray-700">The Connections game by The New York Times.</p>
               </div>
               <div className="bg-orange-50 p-3 rounded-lg border border-orange-200">
-                <h4 className="font-medium text-orange-900 mb-1">Task Completion</h4>
-                <p className="text-xs text-gray-700">instruction following, multi-turn instruction following, long-Context Understanding</p>
+                <h4 className="font-medium text-orange-900 mb-1">NPR Word Puzzles</h4>
+                <p className="text-xs text-gray-700">New puzzles emulating the style of the NPR Sunday Puzzle.</p>
               </div>
               <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
-                <h4 className="font-medium text-purple-900 mb-1">Factuality and Abstention</h4>
-                <p className="text-xs text-gray-700"> long-tailed knowledge </p>
+                <h4 className="font-medium text-purple-900 mb-1">Deciphering</h4>
+                <p className="text-xs text-gray-700">Decipher text containing encrypted or hidden information.</p>
               </div>
               <div className="bg-red-50 p-3 rounded-lg border border-red-200">
-                <h4 className="font-medium text-red-900 mb-1">Safety</h4>
-                <p className="text-xs text-gray-700"> harmful generation and jailbreaking </p>
+                <h4 className="font-medium text-red-900 mb-1">LeetCode</h4>
+                <p className="text-xs text-gray-700">Coding problems from recent weekly and biweekly LeetCode contests.</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                <h4 className="font-medium text-gray-900 mb-1">Instruction Following</h4>
+                <p className="text-xs text-gray-700">Generated, verifiable instructions with few-shot examples from IFEval.</p>
+              </div>
+              <div className="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
+                <h4 className="font-medium text-cyan-900 mb-1">Multi-turn Instruction Following</h4>
+                <p className="text-xs text-gray-700">Includes reminders and triggers, role-playing, and explaining concepts in prescribed ways.</p>
+              </div>
+              <div className="bg-pink-50 p-3 rounded-lg border border-pink-200">
+                <h4 className="font-medium text-pink-900 mb-1">Long-context Queries</h4>
+                <p className="text-xs text-gray-700">Manually written questions requiring understanding of long arXiv papers (LaTeX source).</p>
+              </div>
+              <div className="bg-indigo-50 p-3 rounded-lg border border-indigo-200">
+                <h4 className="font-medium text-indigo-900 mb-1">Factuality and Abstention</h4>
+                <p className="text-xs text-gray-700">Long-tailed knowledge that is very infrequent in web-scale corpora.</p>
               </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 max-w-6xl mx-auto">
               <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
                 <h4 className="font-medium text-emerald-900 mb-1">Academic</h4>
-                <p className="text-xs text-gray-700">questions from college courses</p>
+                <p className="text-xs text-gray-700">Questions from college courses.</p>
               </div>
               <div className="bg-pink-50 p-3 rounded-lg border border-pink-200">
                 <h4 className="font-medium text-pink-900 mb-1">Diagrams</h4>
-                <p className="text-xs text-gray-700">charts and figures collected from recent scientific
-                papers, reports, or blog posts</p>
+                <p className="text-xs text-gray-700">Charts and figures from recent scientific papers, reports, and blog posts.</p>
               </div>
               <div className="bg-indigo-50 p-3 rounded-lg border border-indigo-200">
-                <h4 className="font-medium text-indigo-900 mb-1">Puzzles and game</h4>
-                <p className="text-xs text-gray-700">raven tests, Rebus puzzles and game play</p>
+                <h4 className="font-medium text-indigo-900 mb-1">Puzzles & Games</h4>
+                <p className="text-xs text-gray-700">Raven's tests, rebus puzzles, and gameplay.</p>
               </div>
               <div className="bg-teal-50 p-3 rounded-lg border border-teal-200">
                 <h4 className="font-medium text-teal-900 mb-1">Memes</h4>
-                <p className="text-xs text-gray-700">recreated memes</p>
+                <p className="text-xs text-gray-700">Recreated memes.</p>
               </div>
               <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
-                <h4 className="font-medium text-amber-900 mb-1">Geo</h4>
-                <p className="text-xs text-gray-700">geolocation Inference</p>
+                <h4 className="font-medium text-amber-900 mb-1">Geolocation</h4>
+                <p className="text-xs text-gray-700">Geolocation inference.</p>
               </div>
               <div className="bg-rose-50 p-3 rounded-lg border border-rose-200">
                 <h4 className="font-medium text-rose-900 mb-1">Recognition</h4>
-                <p className="text-xs text-gray-700">fine-grained recognition</p>
+                <p className="text-xs text-gray-700">Fine-grained recognition.</p>
               </div>
               <div className="bg-violet-50 p-3 rounded-lg border border-violet-200">
                 <h4 className="font-medium text-violet-900 mb-1">Multi-image</h4>
-                <p className="text-xs text-gray-700">find-the-difference or video frame reordering.</p>
+                <p className="text-xs text-gray-700">Find-the-difference and video frame reordering.</p>
               </div>
               <div className="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
                 <h4 className="font-medium text-cyan-900 mb-1">Spatial</h4>
-                <p className="text-xs text-gray-700">elative positions, depths/distances, height, etc</p>
+                <p className="text-xs text-gray-700">Relative positions, depths/distances, height, etc.</p>
               </div>
             </div>
           )}
@@ -834,7 +886,7 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
                   { id: 'overall', label: 'Overall', colors: 'bg-gray-100 text-gray-700 border-gray-200' },
                   { id: 'academic', label: 'Academic', colors: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
                   { id: 'diagrams', label: 'Diagrams', colors: 'bg-pink-100 text-pink-700 border-pink-200' },
-                  { id: 'puzzles-game', label: 'Puzzles and Game', colors: 'bg-indigo-100 text-indigo-700 border-indigo-200' },
+                  { id: 'puzzles-game', label: 'Puzzles & Games', colors: 'bg-indigo-100 text-indigo-700 border-indigo-200' },
                   { id: 'memes', label: 'Memes', colors: 'bg-teal-100 text-teal-700 border-teal-200' },
                   { id: 'geolocation', label: 'Geolocation', colors: 'bg-amber-100 text-amber-700 border-amber-200' },
                   { id: 'recognition', label: 'Recognition', colors: 'bg-cyan-100 text-cyan-700 border-cyan-200' },
@@ -856,11 +908,15 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
               ) : (
                 [
                   { id: 'overall', label: 'Overall', colors: 'bg-gray-100 text-gray-700 border-gray-200' },
-                  { id: 'problem-solving', label: 'Problem Solving', colors: 'bg-blue-100 text-blue-700 border-blue-200' },
-                  { id: 'algorithmic-coding', label: 'Algorithmic Coding', colors: 'bg-green-100 text-green-700 border-green-200' },
-                  { id: 'task-completion', label: 'Task Completion', colors: 'bg-orange-100 text-orange-700 border-orange-200' },
-                  { id: 'factuality-abstention', label: 'Factuality and Abstention', colors: 'bg-purple-100 text-purple-700 border-purple-200' },
-                  { id: 'safety', label: 'Safety', colors: 'bg-red-100 text-red-700 border-red-200' }
+                  { id: 'cipherbench', label: 'CipherBench', colors: 'bg-blue-100 text-blue-700 border-blue-200' },
+                  { id: 'academic', label: 'Academic', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'npr', label: 'NPR', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'connections', label: 'Connections', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'ifeval', label: 'IFEval', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'mt', label: 'Multi-Turn', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'longctx', label: 'Long-context', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'factuality', label: 'Factuality', colors: 'bg-purple-100 text-purple-700 border-purple-200' },
+                  { id: 'leetcode', label: 'LeetCode', colors: 'bg-purple-100 text-purple-700 border-purple-200' },
                 ].map((tab) => (
                   <button
                     key={tab.id}
@@ -891,7 +947,7 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
                       Organization
                     </th>
                     <th className="h-10 px-4 text-center align-middle font-medium text-gray-600">
-                      Accuracy ± std(avg@4) <ArrowDown className="inline h-4 w-4 text-gray-400" />
+                      Accuracy ± Std (avg@4) <ArrowDown className="inline h-4 w-4 text-gray-400" />
                     </th>
                     <th className="h-10 px-4 text-center align-middle font-medium text-gray-600">
                       Link
@@ -958,7 +1014,7 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
                   ) : (
                     <tr>
                       <td colSpan={5} className="p-8 text-center text-gray-500">
-                        No results available for this category yet.
+                        See our technical report for more details.
                       </td>
                     </tr>
                   )}
@@ -968,7 +1024,7 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
             
 
             <p className="mt-4 text-sm text-gray-600">
-              <span className="font-medium">Evaluation:</span> Accuracy is calculated based on multiple evaluators, see our github for more details. 
+              <span className="font-medium">Evaluation:</span> Accuracy is computed using multiple evaluators; see our GitHub for details.
             </p>
           </div>
         </div>
