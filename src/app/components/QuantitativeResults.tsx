@@ -20,7 +20,7 @@ type RomeVSubcategory = 'overall' | 'academic' | 'diagrams' | 'puzzles-game' | '
 
 const Leaderboard = () => {
   const [activeMainCategory, setActiveMainCategory] = useState<MainCategory>('Text Tasks');
-  const [activeRomeTab, setActiveRomeTab] = useState<RomeSubcategory>('overall');
+  const [activeRomeTab, setActiveRomeTab] = useState<RomeSubcategory>('Academic');
   const [activeRomeVTab, setActiveRomeVTab] = useState<RomeVSubcategory>('overall');
 
   // Helper function to get model information for ROME models
@@ -919,7 +919,6 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
                 ))
               ) : (
                 [
-                  { id: 'overall', label: 'Overall', colors: 'bg-gray-100 text-gray-700 border-gray-200' },
                   { id: 'Academic', label: 'Academic', colors: 'bg-green-100 text-green-700 border-green-200' },
                   { id: 'NYT connections', label: 'NYT connections', colors: 'bg-green-100 text-green-700 border-green-200' },
                   { id: 'NPR word puzzles', label: 'NPR word puzzles', colors: 'bg-green-100 text-green-700 border-green-200' },
@@ -1036,7 +1035,7 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
             
 
             <p className="mt-4 text-sm text-gray-600">
-              <span className="font-medium">Evaluation:</span> Accuracy is computed using multiple evaluators; see our GitHub for details.
+              <span className="font-medium">Evaluation Metrics:</span> Overall scores are not available for textual tasks due to the use of different evaluation metrics across benchmarks. Visual task accuracy is computed using multiple evaluators—please refer to our GitHub repository for detailed methodology.
             </p>
           </div>
         </div>
