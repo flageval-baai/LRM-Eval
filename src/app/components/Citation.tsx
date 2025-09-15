@@ -7,13 +7,13 @@ const Citation = () => {
   const citations = [
     {
       id: 'rome',
-      title: 'ROME Citation',
-      content: `@misc{rome2025,
+      title: '',
+      content: `@misc{LRM-Eval2025,
   author       = {FlagEval Team},
-  title        = {ROME: A Preliminary Contamination-Free Evaluation of Reasoning Models},
+  title        = {A Preliminary Contamination-Free Evaluation of Reasoning Models},
   year         = {2025},
   howpublished = {xxx},
-  note         = {Accessed: 2025-month-day}
+  note         = {Accessed: 2025-09-day}
 }`
     }
   ];

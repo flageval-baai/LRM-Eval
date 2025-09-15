@@ -32,7 +32,7 @@ export default function Page() {
       <LinksSection />
 
       {/* Latest News */}
-      <LatestNews />
+      {/* <LatestNews /> */}
 
       {/* Partner Logos */}
       {/* <PartnerLogos /> */}

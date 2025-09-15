@@ -15,7 +15,7 @@ interface ModelResult {
 }
 
 type MainCategory = 'Visual Tasks' | 'Text Tasks';
-type RomeSubcategory = 'overall' | 'cipherbench' | 'academic' | 'npr' | 'connections' | 'ifeval' | 'mt' | 'longctx' | 'factuality' | 'leetcode';
+type RomeSubcategory = 'overall' | 'Academic' | 'NYT connections' | 'NPR word puzzles' | 'Deciphering' | 'LeetCode' | 'Instruction Following' | 'Multi-Turn instruction following' | 'Long-context queries' | 'Factuality and abstention';
 type RomeVSubcategory = 'overall' | 'academic' | 'diagrams' | 'puzzles-game' | 'memes' | 'geolocation' | 'recognition' | 'multi-image' | 'spatial';
 
 const Leaderboard = () => {
@@ -279,15 +279,15 @@ const Leaderboard = () => {
   // Parse text_accuracy.json (Text Tasks) into ROME buckets
   const createEmptyRomeBuckets = (): Record<RomeSubcategory, ModelResult[]> => ({
     overall: [],
-    cipherbench: [],
-    academic: [],
-    npr: [],
-    connections: [],
-    ifeval: [],
-    mt: [],
-    longctx: [],
-    factuality: [],
-    leetcode: []
+    'Academic': [],
+    'NYT connections': [],
+    'NPR word puzzles': [],
+    'Deciphering': [],
+    'LeetCode': [],
+    'Instruction Following': [],
+    'Multi-Turn instruction following': [],
+    'Long-context queries': [],
+    'Factuality and abstention': []
   });
 
   const [romeData, setRomeData] = useState<Record<RomeSubcategory, ModelResult[]>>(createEmptyRomeBuckets());
@@ -323,15 +323,27 @@ const Leaderboard = () => {
 
           const per = m?.per_benchmark || {};
           const mapping: Record<string, RomeSubcategory> = {
-            cipherbench: 'cipherbench',
-            academic: 'academic',
-            npr: 'npr',
-            connections: 'connections',
-            ifeval: 'ifeval',
-            mt: 'mt',
-            longctx: 'longctx',
-            factuality: 'factuality',
-            leetcode: 'leetcode'
+            // Verbose keys (if any appear in JSON)
+            'Academic': 'Academic',
+            'NYT connections': 'NYT connections',
+            'NPR word puzzles': 'NPR word puzzles',
+            'Deciphering': 'Deciphering',
+            'LeetCode': 'LeetCode',
+            'Instruction Following': 'Instruction Following',
+            'Multi-Turn instruction following': 'Multi-Turn instruction following',
+            'Long-context queries': 'Long-context queries',
+            'Factuality': 'Factuality and abstention',
+            'Factuality and abstention': 'Factuality and abstention',
+            // Canonical short keys from text_accuracy.json metadata
+            'cipherbench': 'Deciphering',
+            'academic': 'Academic',
+            'npr': 'NPR word puzzles',
+            'connections': 'NYT connections',
+            'ifeval': 'Instruction Following',
+            'mt': 'Multi-Turn instruction following',
+            'longctx': 'Long-context queries',
+            'factuality': 'Factuality and abstention',
+            'leetcode': 'LeetCode'
           };
 
           Object.keys(mapping).forEach((key) => {
@@ -908,15 +920,15 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
               ) : (
                 [
                   { id: 'overall', label: 'Overall', colors: 'bg-gray-100 text-gray-700 border-gray-200' },
-                  { id: 'cipherbench', label: 'CipherBench', colors: 'bg-blue-100 text-blue-700 border-blue-200' },
-                  { id: 'academic', label: 'Academic', colors: 'bg-green-100 text-green-700 border-green-200' },
-                  { id: 'npr', label: 'NPR', colors: 'bg-green-100 text-green-700 border-green-200' },
-                  { id: 'connections', label: 'Connections', colors: 'bg-green-100 text-green-700 border-green-200' },
-                  { id: 'ifeval', label: 'IFEval', colors: 'bg-green-100 text-green-700 border-green-200' },
-                  { id: 'mt', label: 'Multi-Turn', colors: 'bg-green-100 text-green-700 border-green-200' },
-                  { id: 'longctx', label: 'Long-context', colors: 'bg-green-100 text-green-700 border-green-200' },
-                  { id: 'factuality', label: 'Factuality', colors: 'bg-purple-100 text-purple-700 border-purple-200' },
-                  { id: 'leetcode', label: 'LeetCode', colors: 'bg-purple-100 text-purple-700 border-purple-200' },
+                  { id: 'Academic', label: 'Academic', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'NYT connections', label: 'NYT connections', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'NPR word puzzles', label: 'NPR word puzzles', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'Deciphering', label: 'Deciphering', colors: 'bg-blue-100 text-blue-700 border-blue-200' },
+                  { id: 'LeetCode', label: 'LeetCode', colors: 'bg-purple-100 text-purple-700 border-purple-200' },
+                  { id: 'Instruction Following', label: 'Instruction Following', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'Multi-Turn instruction following', label: 'Multi-Turn instruction following', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'Long-context queries', label: 'Long-context queries', colors: 'bg-green-100 text-green-700 border-green-200' },
+                  { id: 'Factuality and abstention', label: 'Factuality and abstention', colors: 'bg-purple-100 text-purple-700 border-purple-200' },
                 ].map((tab) => (
                   <button
                     key={tab.id}
