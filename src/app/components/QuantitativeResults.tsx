@@ -943,8 +943,12 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
                 ))
               )}
             </div>
-            
+            <p className="mt-4 text-sm mb-4 text-gray-600">
+              <span className="font-medium">Evaluation Metrics:</span> Overall scores are not available for textual tasks due to the use of different evaluation metrics across benchmarks. Visual task accuracy is computed using multiple rule-based evaluators—please refer to our GitHub repository for details.
+            </p>
+
             <div className="relative w-full overflow-auto rounded-lg border border-gray-200 shadow-sm">
+              
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-gray-50 border-b">
@@ -1032,11 +1036,6 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
                 </tbody>
               </table>
             </div>
-            
-
-            <p className="mt-4 text-sm text-gray-600">
-              <span className="font-medium">Evaluation Metrics:</span> Overall scores are not available for textual tasks due to the use of different evaluation metrics across benchmarks. Visual task accuracy is computed using multiple evaluators—please refer to our GitHub repository for detailed methodology.
-            </p>
           </div>
         </div>
       </div>
