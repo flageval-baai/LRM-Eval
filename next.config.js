@@ -9,6 +9,9 @@ const nextConfig = {
   },
   basePath: isGitHubPages ? '/LRM-Eval' : '',
   assetPrefix: isGitHubPages ? '/LRM-Eval/' : '',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGitHubPages ? '/LRM-Eval' : '',
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },

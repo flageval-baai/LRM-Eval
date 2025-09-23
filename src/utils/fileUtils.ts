@@ -7,11 +7,22 @@ export type { DataEntry, KnowledgeEntry };
 
 // Get the base path for assets in GitHub Pages
 export function getBasePath(): string {
-  // For GitHub Pages deployment
+  // Prefer public env injected at build time so client and server agree
+  const fromEnv = process.env.NEXT_PUBLIC_BASE_PATH;
+  if (fromEnv && typeof fromEnv === 'string') {
+    return fromEnv;
+  }
+  
+  // Check if we're in production and likely on GitHub Pages
+  // This checks for the specific domain pattern used by GitHub Pages
+  if (typeof window !== 'undefined' && window.location.hostname.includes('github.io')) {
+    return '/LRM-Eval';
+  }
+  
+  // Fallback for server-side or local development
   if (process.env.DEPLOY_TARGET === 'GH_PAGES') {
     return '/LRM-Eval';
   }
-  // For Netlify deployment or local development
   return '';
 }
 
