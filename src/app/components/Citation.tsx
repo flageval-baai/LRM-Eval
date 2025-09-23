@@ -8,11 +8,13 @@ const Citation = () => {
     {
       id: 'lrm-eval',
       title: '',
-      content: `@misc{LRM-Eval2025,
-  author       = {FlagEval Team},
-  title        = {A Preliminary Contamination-Free Evaluation of Reasoning Models},
-  year         = {2025},
-  url          = {https://arxiv.org/abs/2509.17177},
+      content: `@misc{qin2025flageval,
+    title={FlagEval Findings Report: A Preliminary Evaluation of Large Reasoning Models on Automatically Verifiable Textual and Visual Questions},
+    author={Bowen Qin and Chen Yue and Fang Yin and Hui Wang and JG Yao and Jiakang Liu and Jing-Shu Zheng and Miguel Hu Chen and Richeng Xuan and Shibei Meng and Shiqi Zhou and Teng Dai and Tong-Shuai Ren and Wei Cui and Xi Yang and Xialin Du and Xiaojing Xu and Xue Sun and Xuejing Li and Yaming Liu and Yesheng Liu and Ying Liu and Yonghua Lin and Yu Zhao and Yunduo Zhang and Yuwen Luo and Zheqi He and Zhiyuan He and Zhongyuan Wang},
+    year={2025},
+    eprint={2509.17177},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
 }`
     }
   ];
