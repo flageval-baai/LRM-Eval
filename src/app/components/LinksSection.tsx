@@ -52,7 +52,7 @@ const LinksSection = () => {
       </form>
 
       <div className="flex justify-center font-medium gap-8 sm:gap-8 my-2">
-        <Link href="#" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
+        <Link href="https://arxiv.org/abs/2509.17177" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
           <svg 
             className="w-5 h-5" 
             viewBox="0 0 384 512" 

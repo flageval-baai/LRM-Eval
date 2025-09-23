@@ -26,6 +26,27 @@ const Leaderboard = () => {
   // Helper function to get model information for ROME models
   const getRomeModelInfo = (modelName: string) => {
     const modelMap: Record<string, { fullName: string, organization: string, logo: string, hasReasoning: boolean, link: string }> = {
+      'gpt-oss-120b':{
+        fullName: 'GPT-OSS 120B',
+        organization: 'OpenAI',
+        logo: `${getBasePath()}/model_logos/openai_reasoning.png`,
+        hasReasoning: true,
+        link: 'https://openai.com'
+      },
+      'qwen3-next-80b-a3b-instruct':{
+        fullName: 'Qwen3 Next 80B A3B Instruct',
+        organization: 'Qwen',
+        logo: `${getBasePath()}/model_logos/qwen.png`,
+        hasReasoning: true,
+        link: 'https://qwenlm.github.io'
+      },
+      'qwen3-next-80b-a3b-thinking':{
+        fullName: 'Qwen3 Next 80B A3B Thinking',
+        organization: 'Qwen',
+        logo: `${getBasePath()}/model_logos/qwen.png`,
+        hasReasoning: true,
+        link: 'https://qwenlm.github.io'
+      },
       'DeepSeek-Chat': {
         fullName: 'DeepSeek Chat',
         organization: 'DeepSeek',
@@ -195,14 +216,14 @@ const Leaderboard = () => {
         link: 'https://qwenlm.github.io'
       },
       'qwen3-235b-a22b-instruct-2507': {
-        fullName: 'Qwen3-235B Instruct',
+        fullName: 'Qwen3-235B Instruct(2507)',
         organization: 'Qwen',
         logo: `${getBasePath()}/model_logos/qwen.png`,
         hasReasoning: true,
         link: 'https://qwenlm.github.io'
       },
       'qwen3-235b-a22b-thinking-2507': {
-        fullName: 'Qwen3-235B Thinking',
+        fullName: 'Qwen3-235B Thinking(2507)',
         organization: 'Qwen',
         logo: `${getBasePath()}/model_logos/qwen.png`,
         hasReasoning: true,
@@ -295,7 +316,7 @@ const Leaderboard = () => {
   useEffect(() => {
     const loadTextResultsFromJson = async () => {
       try {
-        const res = await fetch(`${getBasePath()}/data/rome/text_accuracy.json`);
+        const res = await fetch(`${getBasePath()}/data/rome/text_accuracy_new.json`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
@@ -739,6 +760,10 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
   // Get current data based on active category and tab
   const getCurrentData = () => {
     if (activeMainCategory === 'Text Tasks') {
+      // For LeetCode, show "See our technical report for more details."
+      if (activeRomeTab === 'LeetCode') {
+        return [];
+      }
       return sortAndRankModels(romeData[activeRomeTab]);
     } else {
       return sortAndRankModels(romeVData[activeRomeVTab]);
