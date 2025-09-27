@@ -571,6 +571,63 @@ const Leaderboard = () => {
         logo: `${getBasePath()}/model_logos/mistral.png`,
         hasReasoning: true,
         link: 'https://mistral.ai'
+      },
+      // New visual models from updated CSV
+      'qwen3-vl-235b-a22b-instruct': {
+        fullName: 'Qwen3-VL-235B Instruct',
+        organization: 'Qwen',
+        logo: `${getBasePath()}/model_logos/qwen.png`,
+        hasReasoning: true,
+        link: 'https://qwenlm.github.io'
+      },
+      'qwen3-vl-235b-a22b-thinking': {
+        fullName: 'Qwen3-VL-235B Thinking',
+        organization: 'Qwen',
+        logo: `${getBasePath()}/model_logos/qwen.png`,
+        hasReasoning: true,
+        link: 'https://qwenlm.github.io'
+      },
+      'qwen-vl-max-2025-08-13': {
+        fullName: 'Qwen VL Max (2025-08-13)',
+        organization: 'Qwen',
+        logo: `${getBasePath()}/model_logos/qwen.png`,
+        hasReasoning: true,
+        link: 'https://qwenlm.github.io'
+      },
+      'seed-1-6-vision': {
+        fullName: 'Seed 1.6 Vision',
+        organization: 'Bytedance',
+        logo: `${getBasePath()}/model_logos/seed.png`,
+        hasReasoning: true,
+        link: '#'
+      },
+      'ernie-4.5-vl-424b-a47b': {
+        fullName: 'ERNIE 4.5-VL',
+        organization: 'Baidu',
+        logo: `${getBasePath()}/model_logos/ernie.png`,
+        hasReasoning: true,
+        link: '#'
+      },
+      'glm-4.5v': {
+        fullName: 'GLM-4.5V',
+        organization: 'Zhipu AI',
+        logo: `${getBasePath()}/model_logos/zhipu.png`,
+        hasReasoning: true,
+        link: '#'
+      },
+      'hunyuan-t1-vision-20250619': {
+        fullName: 'Hunyuan T1 Vision (2025-06-19)',
+        organization: 'Tencent',
+        logo: `${getBasePath()}/model_logos/hunyuan.png`,
+        hasReasoning: true,
+        link: '#'
+      },
+      'step-3':{
+        fullName: 'Step 3',
+        organization: 'StepFun',
+        logo: `${getBasePath()}/model_logos/step.png`,
+        hasReasoning: true,
+        link: '#'
       }
     };
 
@@ -583,35 +640,9 @@ const Leaderboard = () => {
     };
   };
 
-  // CSV data (hardcoded for now - in production this would be loaded from the CSV file)
-  const csvData = `Model,Puzzles Games,Spatial,Recognition,Multi,Diagrams,Geo,Academic,Memes,Overall
-gemini-2.5-pro,40.9 ± 8.2,39.3 ± 1.2,58.7 ± 4.5,52.8 ± 3.8,63.5 ± 3.8,70.2 ± 2.7,77.7 ± 2.9,82.5 ± 4.9,61.1 ± 0.6
-gemini-2.5-flash-thinking,28.0 ± 6.6,31.4 ± 2.0,46.6 ± 1.7,44.2 ± 1.4,56.4 ± 3.1,58.0 ± 3.5,67.6 ± 4.3,66.7 ± 2.4,50.3 ± 1.3
-gemini-2.5-flash,21.2 ± 4.8,33.6 ± 2.4,40.2 ± 2.7,46.7 ± 2.4,51.3 ± 1.8,54.3 ± 1.5,62.2 ± 1.9,50.0 ± 8.2,45.5 ± 1.3
-gpt-5-high,43.2 ± 2.5,42.1 ± 5.8,48.9 ± 4.7,62.5 ± 2.8,59.0 ± 3.1,69.0 ± 0.9,68.9 ± 2.3,82.5 ± 4.3,59.6 ± 1.2
-gpt-5-medium,39.4 ± 2.1,40.7 ± 2.4,49.2 ± 6.2,66.7 ± 4.1,56.4 ± 1.8,73.0 ± 5.1,71.6 ± 4.5,81.7 ± 1.7,60.0 ± 1.3
-gpt-5-low,34.8 ± 2.6,33.6 ± 5.5,52.3 ± 3.3,58.3 ± 3.7,59.6 ± 2.1,70.2 ± 2.9,71.6 ± 2.3,80.0 ± 4.1,57.9 ± 0.9
-gpt-5-minimal,21.2 ± 3.7,28.6 ± 3.5,46.2 ± 3.3,51.7 ± 3.7,25.6 ± 4.1,63.9 ± 2.3,31.1 ± 6.2,63.3 ± 4.1,41.4 ± 0.8
-gpt-5-mini-medium,39.4 ± 0.0,32.9 ± 7.1,46.2 ± 5.8,46.7 ± 5.3,53.2 ± 4.9,52.8 ± 2.8,69.6 ± 3.5,72.5 ± 2.8,51.7 ± 2.3
-o3-high,37.9 ± 2.6,39.3 ± 4.7,48.5 ± 6.2,60.0 ± 3.3,51.9 ± 5.2,67.5 ± 1.8,65.5 ± 5.5,77.5 ± 4.3,56.1 ± 1.7
-o3-medium,34.8 ± 5.0,38.6 ± 1.4,51.9 ± 2.0,65.0 ± 5.0,47.4 ± 2.9,67.0 ± 1.6,68.2 ± 4.0,75.8 ± 2.8,56.1 ± 1.9
-o3-low,32.6 ± 5.8,36.4 ± 3.7,53.8 ± 1.3,61.7 ± 2.9,50.6 ± 2.1,66.5 ± 3.3,64.2 ± 6.2,76.7 ± 2.4,55.3 ± 0.9
-o4-mini-high,40.2 ± 3.9,37.9 ± 3.1,40.2 ± 1.3,51.7 ± 3.7,48.7 ± 3.6,54.0 ± 3.6,65.5 ± 2.2,77.5 ± 2.8,51.8 ± 1.0
-o4-mini-medium,37.9 ± 4.5,32.1 ± 6.5,35.6 ± 2.5,54.2 ± 3.6,50.0 ± 2.9,49.4 ± 2.0,63.5 ± 3.0,78.3 ± 2.9,49.8 ± 1.1
-o4-mini-low,36.4 ± 4.8,31.4 ± 3.5,40.2 ± 2.5,43.3 ± 7.1,48.1 ± 3.8,47.7 ± 3.1,57.4 ± 4.8,75.8 ± 3.6,47.3 ± 1.6
-claude-sonnet-4-thinking,27.3 ± 4.8,26.4 ± 3.1,22.7 ± 1.1,35.4 ± 5.2,49.4 ± 3.3,27.6 ± 0.5,68.2 ± 2.9,54.2 ± 6.0,38.9 ± 1.5
-claude-sonnet-4,22.7 ± 2.6,27.9 ± 2.4,17.8 ± 2.0,29.2 ± 2.8,46.2 ± 1.8,32.1 ± 2.0,58.1 ± 2.3,47.5 ± 2.8,35.5 ± 1.1
-gpt-4-1,24.2 ± 4.3,34.3 ± 3.5,54.9 ± 4.7,57.5 ± 4.3,46.8 ± 3.3,60.8 ± 0.6,50.0 ± 1.4,67.5 ± 4.9,49.5 ± 1.4
-QVQ-72B,17.2 ± 3.5,17.1 ± 2.0,10.6 ± 1.3,27.5 ± 2.8,37.8 ± 2.8,33.5 ± 3.1,41.9 ± 5.9,19.1 ± 1.6,26.7 ± 1.1
-Qwen2.5-VL-72B,8.3 ± 3.9,28.6 ± 0.0,25.8 ± 2.6,33.3 ± 0.0,41.0 ± 0.0,28.7 ± 1.5,37.8 ± 0.0,23.3 ± 0.0,28.8 ± 0.1
-Qwen2.5-VL-7B,8.3 ± 4.5,22.9 ± 4.0,13.6 ± 3.4,18.3 ± 5.0,12.8 ± 6.3,22.4 ± 2.8,20.9 ± 2.2,13.3 ± 4.1,16.9 ± 1.4
-llama-4-maverick,12.9 ± 1.3,27.1 ± 5.2,15.2 ± 2.8,31.7 ± 3.7,39.7 ± 2.9,29.5 ± 0.8,43.9 ± 4.8,19.2 ± 1.4,28.0 ± 0.8
-mistral-medium-3,15.9 ± 4.5,25.0 ± 4.2,15.9 ± 3.1,20.8 ± 3.6,30.1 ± 3.8,29.3 ± 2.0,39.2 ± 1.4,23.3 ± 2.4,25.5 ± 0.3
-mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,28.4 ± 2.4,48.0 ± 7.5,27.5 ± 6.0,26.3 ± 0.5`;
-
-  // Parse CSV and create romeVData
-  const parseCSVToRomeVData = (): Record<RomeVSubcategory, ModelResult[]> => {
-    const lines = csvData.trim().split('\n');
+  // Parse CSV text and create Rome-V data buckets
+  const parseCSVToRomeVData = (csvText: string): Record<RomeVSubcategory, ModelResult[]> => {
+    const lines = csvText.trim().split('\n');
     const headers = lines[0].split(',');
     const models = lines.slice(1);
 
@@ -669,8 +700,37 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
     return result;
   };
 
-  // Rome-V dataset - Visual reasoning tasks parsed from CSV
-  const romeVData: Record<RomeVSubcategory, ModelResult[]> = parseCSVToRomeVData();
+  // Create empty Rome-V buckets
+  const createEmptyRomeVBuckets = (): Record<RomeVSubcategory, ModelResult[]> => ({
+    overall: [],
+    academic: [],
+    diagrams: [],
+    'puzzles-game': [],
+    memes: [],
+    geolocation: [],
+    recognition: [],
+    'multi-image': [],
+    spatial: []
+  });
+
+  // Rome-V dataset state - Visual reasoning tasks
+  const [romeVData, setRomeVData] = useState<Record<RomeVSubcategory, ModelResult[]>>(createEmptyRomeVBuckets());
+
+  useEffect(() => {
+    const loadVisualResultsFromCsv = async () => {
+      try {
+        const res = await fetch(`${getBasePath()}/data/rome/accuracy_table.csv`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const csvText = await res.text();
+        const parsed = parseCSVToRomeVData(csvText);
+        setRomeVData(parsed);
+      } catch (err) {
+        setRomeVData(createEmptyRomeVBuckets());
+      }
+    };
+    loadVisualResultsFromCsv();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 判断两个模型是否应该并列
   const shouldTie = (model1: ModelResult, model2: ModelResult) => {
@@ -752,7 +812,12 @@ mistral-medium-3-1,15.9 ± 6.9,22.9 ± 4.5,16.7 ± 4.7,20.0 ± 4.1,27.6 ± 2.1,2
       'Mistral AI': 'bg-pink-100 text-pink-700 border-pink-200',
       'Moonshot AI': 'bg-red-100 text-red-700 border-red-200',
       'Microsoft': 'bg-yellow-100 text-yellow-700 border-yellow-200',
-      'xAI': 'bg-cyan-100 text-cyan-700 border-cyan-200'
+      'xAI': 'bg-cyan-100 text-cyan-700 border-cyan-200',
+      'Bytedance': 'bg-blue-100 text-blue-700 border-blue-200',
+      'Baidu': 'bg-purple-100 text-purple-700 border-purple-200',
+      'Zhipu AI': 'bg-teal-100 text-teal-700 border-teal-200',
+      'Tencent': 'bg-red-100 text-red-700 border-purple-200',
+      'StepFun': 'bg-yellow-100 text-yellow-700 border-blue-200'
     };
     return colors[organization as keyof typeof colors] || 'bg-gray-100 text-gray-700 border-gray-200';
   };
