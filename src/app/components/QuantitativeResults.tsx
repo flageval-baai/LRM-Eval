@@ -843,7 +843,7 @@ const Leaderboard = () => {
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             {/* {activeMainCategory === 'rome' ? 'ROME' : 'ROME-V'} Leaderboard */}
-            Leaderboard
+            Detailed Results
           </h2>
           <div className="mx-auto h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
         </div>
@@ -882,7 +882,7 @@ const Leaderboard = () => {
           {activeMainCategory === 'Text Tasks' ? (
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-7xl mx-auto">
               <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-                <h4 className="font-medium text-blue-900 mb-1">Academic</h4>
+                <h4 className="font-medium text-blue-900 mb-1">Course questions</h4>
                 <p className="text-xs text-gray-700">College-level questions from course and lecture materials across STEM, humanities, and social sciences.</p>
               </div>
               <div className="bg-green-50 p-3 rounded-lg border border-green-200">
@@ -890,7 +890,7 @@ const Leaderboard = () => {
                 <p className="text-xs text-gray-700">The Connections game by The New York Times.</p>
               </div>
               <div className="bg-orange-50 p-3 rounded-lg border border-orange-200">
-                <h4 className="font-medium text-orange-900 mb-1">NPR Word Puzzles</h4>
+                <h4 className="font-medium text-orange-900 mb-1">NPR-style puzzles</h4>
                 <p className="text-xs text-gray-700">New puzzles emulating the style of the NPR Sunday Puzzle.</p>
               </div>
               <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
@@ -902,26 +902,26 @@ const Leaderboard = () => {
                 <p className="text-xs text-gray-700">Coding problems from recent weekly and biweekly LeetCode contests.</p>
               </div>
               <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                <h4 className="font-medium text-gray-900 mb-1">Instruction Following</h4>
+                <h4 className="font-medium text-gray-900 mb-1">Instruction following</h4>
                 <p className="text-xs text-gray-700">Generated, verifiable instructions with few-shot examples from IFEval.</p>
               </div>
               <div className="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
-                <h4 className="font-medium text-cyan-900 mb-1">Multi-turn Instruction Following</h4>
+                <h4 className="font-medium text-cyan-900 mb-1">Multi-turn instructions</h4>
                 <p className="text-xs text-gray-700">Includes reminders and triggers, role-playing, and explaining concepts in prescribed ways.</p>
               </div>
               <div className="bg-pink-50 p-3 rounded-lg border border-pink-200">
-                <h4 className="font-medium text-pink-900 mb-1">Long-context Queries</h4>
+                <h4 className="font-medium text-pink-900 mb-1">Long-context queries</h4>
                 <p className="text-xs text-gray-700">Manually written questions requiring understanding of long arXiv papers (LaTeX source).</p>
               </div>
               <div className="bg-indigo-50 p-3 rounded-lg border border-indigo-200">
-                <h4 className="font-medium text-indigo-900 mb-1">Factuality and Abstention</h4>
+                <h4 className="font-medium text-indigo-900 mb-1">Factuality and abstention</h4>
                 <p className="text-xs text-gray-700">Long-tailed knowledge that is very infrequent in web-scale corpora.</p>
               </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 max-w-6xl mx-auto">
               <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
-                <h4 className="font-medium text-emerald-900 mb-1">Academic</h4>
+                <h4 className="font-medium text-emerald-900 mb-1">Course problems</h4>
                 <p className="text-xs text-gray-700">Questions from college courses.</p>
               </div>
               <div className="bg-pink-50 p-3 rounded-lg border border-pink-200">
@@ -1034,7 +1034,7 @@ const Leaderboard = () => {
               )}
             </div>
             <p className="mt-4 text-sm mb-4 text-gray-600">
-              <span className="font-medium">Evaluation Metrics:</span> Overall scores are not available for textual tasks due to the use of different evaluation metrics across benchmarks. Visual task accuracy is computed using multiple rule-based evaluators—please refer to our GitHub repository for details.
+              <span className="font-medium">Evaluation Metrics:</span> Overall scores are not available for textual tasks due to the use of different evaluation metrics across benchmarks. Visual task accuracy is computed using multiple types of evaluators—please refer to our GitHub repository for details.
             </p>
 
             <div className="relative w-full overflow-auto rounded-lg border border-gray-200 shadow-sm">
