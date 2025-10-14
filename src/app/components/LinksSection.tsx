@@ -75,12 +75,22 @@ const LinksSection = () => {
         <Link href="https://github.com/flageval-baai/ROME-evaluation" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
           <Image
             src={`${getBasePath()}/github.png`}
+            alt="Evaluation Code"
+            width={10}
+            height={20}
+            className="w-5 h-5 max-w-full h-auto"
+          />
+          Evaluation Code
+        </Link>
+        <Link href="https://github.com/jyao11os/llm_reasoning_analyzer" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
+          <Image
+            src={`${getBasePath()}/github.png`}
             alt="GitHub"
             width={10}
             height={20}
             className="w-5 h-5 max-w-full h-auto"
           />
-          GitHub
+          Reasoning Analyzer
         </Link>
         <Link href="https://huggingface.co/datasets/BAAI/ROME" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
           <Image
