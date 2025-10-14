@@ -199,6 +199,53 @@ const Introduction = () => {
                     </p>
                 </div>
 
+                {/* Overall Performance Section */}
+                <div className="max-w-5xl mx-auto">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Overall Performance</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Textual Tasks */}
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                            <p className="text-base text-gray-700 leading-relaxed mb-4">
+                                We evaluate more than thirty large reasoning models on textual and visual reasoning tasks (four runs per model). The scatter plots display the mean ± standard deviation of overall accuracy versus token usage for textual (first) and visual (second) tasks.
+                            </p>
+                            <div
+                                onClick={() => setSelectedImage(`${basePath}/LLM-overall_scatter.png`)}
+                                className="relative w-full h-96 md:h-[28rem] rounded-xl overflow-hidden border border-gray-200 bg-white block cursor-pointer mt-6 hover:ring-2 hover:ring-indigo-200"
+                            >
+                                <Image
+                                    src={`${basePath}/LLM-overall_scatter.png`}
+                                    alt="Textual Tasks Overall Performance Results"
+                                    fill
+                                    className="object-contain p-2"
+                                    sizes="(max-width: 1024px) 100vw, 100vw"
+                                />
+                            </div>
+                            <p className="mt-2 text-center text-sm text-gray-500">Textual tasks: accuracy vs. token usage</p>
+                        </div>
+
+                        {/* Visual Tasks */}
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                            <p className="text-base text-gray-700 leading-relaxed mb-4">
+                                We also release <span className="text-emerald-600 font-medium">ROME</span>, an evaluation benchmark for vision-language models designed to assess reasoning from visual evidence. The figure reports the mean ± standard deviation of overall accuracy versus token usage for visual tasks.
+                            </p>
+                            <div
+                                onClick={() => setSelectedImage(`${basePath}/VLM-overall_scatter.png`)}
+                                className="relative w-full h-96 md:h-[28rem] rounded-xl overflow-hidden border border-gray-200 bg-white block cursor-pointer mt-6 hover:ring-2 hover:ring-indigo-200"
+                            >
+                                <Image
+                                    src={`${basePath}/VLM-overall_scatter.png`}
+                                    alt="Visual Tasks Overall Performance Results"
+                                    fill
+                                    className="object-contain p-2"
+                                    sizes="(max-width: 1024px) 100vw, 100vw"
+                                />
+                            </div>
+                            <p className="mt-2 text-center text-sm text-gray-500">Visual tasks: accuracy vs. token usage</p>
+                        </div>
+                    </div>
+                </div>
+
+
                 {/* Key Findings Section */}
                 <div className="max-w-5xl mx-auto">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">Key Findings: Observed Reasoning Phenomena</h3>
@@ -268,51 +315,6 @@ const Introduction = () => {
                     </div>
                 </div>
 
-                {/* Overall Performance Section */}
-                <div className="max-w-5xl mx-auto">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Overall Performance Analysis</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Textual Tasks */}
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                            <p className="text-base text-gray-700 leading-relaxed mb-4">
-                                We evaluate more than thirty large reasoning models on textual and visual reasoning tasks (four runs per model). The scatter plots display the mean ± standard deviation of overall accuracy versus token usage for textual (first) and visual (second) tasks.
-                            </p>
-                            <div
-                                onClick={() => setSelectedImage(`${basePath}/LLM-overall_scatter.png`)}
-                                className="relative w-full h-96 md:h-[28rem] rounded-xl overflow-hidden border border-gray-200 bg-white block cursor-pointer mt-6 hover:ring-2 hover:ring-indigo-200"
-                            >
-                                <Image
-                                    src={`${basePath}/LLM-overall_scatter.png`}
-                                    alt="Textual Tasks Overall Performance Results"
-                                    fill
-                                    className="object-contain p-2"
-                                    sizes="(max-width: 1024px) 100vw, 100vw"
-                                />
-                            </div>
-                            <p className="mt-2 text-center text-sm text-gray-500">Textual tasks: accuracy vs. token usage</p>
-                        </div>
-
-                        {/* Visual Tasks */}
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                            <p className="text-base text-gray-700 leading-relaxed mb-4">
-                                We also release <span className="text-emerald-600 font-medium">ROME</span>, an evaluation benchmark for vision-language models designed to assess reasoning from visual evidence. The figure reports the mean ± standard deviation of overall accuracy versus token usage for visual tasks.
-                            </p>
-                            <div
-                                onClick={() => setSelectedImage(`${basePath}/VLM-overall_scatter.png`)}
-                                className="relative w-full h-96 md:h-[28rem] rounded-xl overflow-hidden border border-gray-200 bg-white block cursor-pointer mt-6 hover:ring-2 hover:ring-indigo-200"
-                            >
-                                <Image
-                                    src={`${basePath}/VLM-overall_scatter.png`}
-                                    alt="Visual Tasks Overall Performance Results"
-                                    fill
-                                    className="object-contain p-2"
-                                    sizes="(max-width: 1024px) 100vw, 100vw"
-                                />
-                            </div>
-                            <p className="mt-2 text-center text-sm text-gray-500">Visual tasks: accuracy vs. token usage</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             {/* Image Modal Component */}

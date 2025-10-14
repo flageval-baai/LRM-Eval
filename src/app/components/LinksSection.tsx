@@ -80,7 +80,7 @@ const LinksSection = () => {
             height={20}
             className="w-5 h-5 max-w-full h-auto"
           />
-          Evaluation Code
+          Code
         </Link>
         <Link href="https://github.com/jyao11os/llm_reasoning_analyzer" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
           <Image
@@ -100,7 +100,7 @@ const LinksSection = () => {
             height={20}
             className="w-5 h-5 max-w-full h-auto"
           />
-          Dataset
+          ROME Benchmark
           <span className="text-gray-500 text-sm font-mono"> </span>
         </Link>
         <Link href="https://huggingface.co/datasets/BAAI/ROME-Evaluated" className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
