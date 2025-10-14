@@ -32,18 +32,17 @@ const poppins = Poppins({
 const currentFont = inter;
 
 export const metadata: Metadata = {
-  title: "ROME",
+  title: "LRM-Eval",
   description: "A Preliminary Contamination-Free Evaluation of Reasoning Models",
-  // icons: {
-  //   icon: [
-  //     { url: `${getBasePath()}/icon.png` },
-  //     { url: `${getBasePath()}/icon-dark.png`, media: '(prefers-color-scheme: dark)' }
-  //   ],
-  //   apple: [
-  //     { url: `${getBasePath()}/apple-icon.png` }
-  //   ],
-  //   shortcut: [`${getBasePath()}/favicon.ico`]
-  // }
+  icons: {
+    icon: [
+      { url: `${getBasePath()}/flageval.png` }
+    ],
+    apple: [
+      { url: `${getBasePath()}/flageval.png` }
+    ],
+    shortcut: [`${getBasePath()}/flageval.png`]
+  }
 };
 
 export default function RootLayout({

@@ -23,7 +23,7 @@ const PhenomenonCard = ({ item, onImageClick }: { item: any; onImageClick: (src:
             className="bg-white rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
         >
             <figure className="w-full">
-                <div className="group relative w-full h-80 sm:h-96 md:h-120 lg:h-144 rounded-xl overflow-hidden border border-gray-200 bg-gradient-to-b from-white to-gray-50 hover:ring-2 hover:ring-indigo-200">
+                <div className="group relative w-full h-60 sm:h-80 md:h-100 lg:h-120 rounded-xl overflow-hidden border border-gray-200 bg-gradient-to-b from-white to-gray-50 hover:ring-2 hover:ring-indigo-200">
                     <Image
                         src={activeExample.src}
                         alt={activeExample.alt || item.title}
@@ -218,9 +218,9 @@ const Introduction = () => {
                                             <div className="flex flex-col items-center justify-start h-full space-y-4 pt-6">
                                                 <div className="flex items-center justify-center gap-2">
                                                     <p className="font-semibold text-gray-800 text-center text-xl">{item.title}</p>
-                                                    <span className="hidden sm:inline-block text-[10px] uppercase tracking-wide bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full border border-indigo-100">{item.tag}</span>
+                                                    {/* <span className="hidden sm:inline-block text-[10px] uppercase tracking-wide bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full border border-indigo-100">{item.tag}</span> */}
                                                 </div>
-                                                <div className="relative w-48 h-48 mx-auto">
+                                                <div className="relative w-64 h-64 mx-auto">
                                                     <Image
                                                         src={item.sketch}
                                                         alt={`${item.title} sketch`}
