@@ -196,7 +196,6 @@ const Introduction = () => {
                 <div className="max-w-5xl mx-auto p-6 rounded-3xl border border-gray-200 bg-gradient-to-r from-indigo-50 via-white to-purple-50 shadow-sm ring-1 ring-gray-200/50">
                     <p className="text-base md:text-lg text-gray-700 leading-8">
                         We present a moderate-scale evaluation of contemporary large reasoning models designed to minimize contamination. Our preliminary analyses also reveal some intriguing behaviors of reasoning. We also release <span className="text-emerald-600 font-medium">ROME</span>, our evaluation benchmark for vision-language models designed to assess reasoning from visual evidence.
-                        /*reveal characteristic behaviors in model reasoning traces, including <span className="text-indigo-600 font-medium">misaligned thinking and answering</span>, <span className="text-indigo-600 font-medium">hallucinated tool use</span>, <span className="text-indigo-600 font-medium">hallucinated visual details</span>, and <span className="text-indigo-600 font-medium">hallucinated web search</span>.*/
                     </p>
                 </div>
 
@@ -222,7 +221,7 @@ const Introduction = () => {
                                     sizes="(max-width: 1024px) 100vw, 100vw"
                                 />
                             </div>
-//                            <p className="mt-2 text-center text-sm text-gray-500">Textual tasks: accuracy vs. token usage</p>
+                            {/* <p className="mt-2 text-center text-sm text-gray-500">Textual tasks: accuracy vs. token usage</p> */}
                         </div>
 
                         {/* Visual Tasks */}
@@ -242,7 +241,7 @@ const Introduction = () => {
                                     sizes="(max-width: 1024px) 100vw, 100vw"
                                 />
                             </div>
-//                            <p className="mt-2 text-center text-sm text-gray-500">Visual tasks: accuracy vs. token usage</p>
+                            {/* <p className="mt-2 text-center text-sm text-gray-500">Visual tasks: accuracy vs. token usage</p> */}
                         </div>
                     </div>
                 </div>
@@ -291,33 +290,33 @@ const Introduction = () => {
                     </div>
                 </div>
 
-//                 {/* Our Contributions Section */}
-//                <div className="max-w-4xl mx-auto">
-//                    <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Contributions</h3>
-//                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//                        {contributions.map((item) => (
-//                             <div key={item.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 flex flex-col">
-//                                <div className="flex items-center gap-4">
-//                                    <div className="bg-gradient-to-br from-blue-100 to-purple-200 text-indigo-600 p-3 rounded-full ring-2 ring-white">
-//                                        {item.icon}
-//                                    </div>
-//                                    <h4 className="text-xl font-bold text-gray-800">{item.title}</h4>
-//                                </div>
-//                                <p className="text-gray-600 mt-4 flex-grow">{item.description}</p>
-//                                <a
-//                                    href={item.href}
-//                                    target={item.href === '#' ? '_self' : '_blank'}
-//                                    rel="noopener noreferrer"
-//                                    className="mt-6 inline-block text-center bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold px-6 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5 duration-300"
-//                                >
-//                                    {item.cta}
-//                                </a>
-//                            </div>
-//                        ))}
-//                    </div>
-//                </div>
-//
-//            </div>
+                 {/* Our Contributions Section */}
+                {/* <div className="max-w-4xl mx-auto">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Contributions</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {contributions.map((item) => (
+                             <div key={item.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 flex flex-col">
+                                <div className="flex items-center gap-4">
+                                    <div className="bg-gradient-to-br from-blue-100 to-purple-200 text-indigo-600 p-3 rounded-full ring-2 ring-white">
+                                        {item.icon}
+                                    </div>
+                                    <h4 className="text-xl font-bold text-gray-800">{item.title}</h4>
+                                </div>
+                                <p className="text-gray-600 mt-4 flex-grow">{item.description}</p>
+                                <a
+                                    href={item.href}
+                                    target={item.href === '#' ? '_self' : '_blank'}
+                                    rel="noopener noreferrer"
+                                    className="mt-6 inline-block text-center bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold px-6 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5 duration-300"
+                                >
+                                    {item.cta}
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </div> */}
+
+            </div>
 
             {/* Image Modal Component */}
             {selectedImage && (
