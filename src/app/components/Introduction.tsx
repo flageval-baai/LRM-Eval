@@ -197,6 +197,18 @@ const Introduction = () => {
                     <p className="text-base md:text-lg text-gray-700 leading-8">
                         We present a moderate-scale evaluation of contemporary large reasoning models designed to minimize contamination. Our preliminary analyses also reveal some intriguing behaviors of reasoning. We also release <span className="text-emerald-600 font-medium">ROME</span>, our evaluation benchmark for vision-language models designed to assess reasoning from visual evidence.
                     </p>
+                    <div
+                        onClick={() => setSelectedImage(`${basePath}/page.png`)}
+                        className="relative w-full h-96 md:h-[28rem] rounded-xl overflow-hidden border border-gray-200 bg-white block cursor-pointer mt-6 hover:ring-2 hover:ring-indigo-200"
+                    >
+                        <Image
+                            src={`${basePath}/page.png`}
+                            alt="Page overview"
+                            fill
+                            className="object-contain p-2"
+                            sizes="(max-width: 1024px) 100vw, 100vw"
+                        />
+                    </div>
                 </div>
 
                 {/* Overall Performance Section */}
