@@ -411,6 +411,20 @@ const Leaderboard = () => {
   // Helper function to get model information based on model name
   const getModelInfo = (modelName: string) => {
     const modelMap: Record<string, { fullName: string, organization: string, logo: string, hasReasoning: boolean, link: string }> = {
+      'gemini-3-pro-preview': {
+        fullName: 'Gemini 3 Pro Preview',
+        organization: 'Google',
+        logo: `${getBasePath()}/model_logos/google-gemini-icon.png`,
+        hasReasoning: true,
+        link: 'https://deepmind.google/technologies/gemini/'
+      },
+      'grok-4': {
+        fullName: 'Grok-4',
+        organization: 'xAI',
+        logo: `${getBasePath()}/model_logos/grok.png`,
+        hasReasoning: true,
+        link: 'https://x.ai'
+      },
       'gemini-2.5-pro': {
         fullName: 'Gemini 2.5 Pro',
         organization: 'Google',
